@@ -1,7 +1,11 @@
 package com.grtapplications.android.tipcalculator
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import com.grtapplications.android.tipcalculator.databinding.ActivityMainBinding
 import java.text.NumberFormat
 
@@ -36,7 +40,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set up a click listener
-        binding.calculateButton.setOnClickListener{ calculateTip() }
+        binding.calculateButton.setOnClickListener { calculateTip() }
+        // Hide keyboard on 'enter'
+        binding.costOfService.setOnKeyListener { view, keyCode, _ ->
+            handleKeyEvent(view, keyCode)
+        }
+
     }
 
     private fun calculateTip() {
@@ -51,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         // Get tip percentage from the selected radio button
         val tipPercentage =
-            when(binding.tipOptions.checkedRadioButtonId) {
+            when (binding.tipOptions.checkedRadioButtonId) {
                 R.id.option_twenty_percent -> 0.20
                 R.id.option_eighteen_percent -> 0.18
                 R.id.option_fifteen_percent -> 0.15
@@ -66,9 +75,21 @@ class MainActivity : AppCompatActivity() {
 
         // Format currency according to user settings
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
-        val formattedTotal = NumberFormat.getCurrencyInstance().format(cost+tip)
+        val formattedTotal = NumberFormat.getCurrencyInstance().format(cost + tip)
 
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
         binding.totalResult.text = getString(R.string.total_amount, formattedTotal)
     }
+
+    private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            // Hide the keyboard
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            return true
+        }
+        return false
+    }
+
 }
