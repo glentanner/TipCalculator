@@ -28,34 +28,52 @@ class CalculatorTests {
     @Test
     fun calculate_20_percent_tip() {
         onView(withId(R.id.cost_of_service))
+            .perform(clearText())
             .perform(typeText("50.00"))
             .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.option_twenty_percent))
+            .perform(click())
         onView(withId(R.id.calculate_button))
             .perform(click())
+        Thread.sleep(5000)
         onView(withId(R.id.tip_result))
             .check(matches(withText(containsString("$10.00"))))
+        onView(withId(R.id.total_result))
+            .check(matches(withText(containsString("$60.00"))))
     }
 
     @Test
     fun calculate_18_percent_tip() {
         onView(withId(R.id.cost_of_service))
-            .perform(clearText(), typeText("100.00"))
+            .perform(clearText())
+            .perform(typeText("50.00"))
             .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.option_eighteen_percent))
+            .perform(click())
         onView(withId(R.id.calculate_button))
             .perform(click())
+        Thread.sleep(5000)
         onView(withId(R.id.tip_result))
-            .check(matches(withText(containsString("$18.00"))))
+            .check(matches(withText(containsString("$9.00"))))
+        onView(withId(R.id.total_result))
+            .check(matches(withText(containsString("$59.00"))))
     }
 
     @Test
     fun calculate_15_percent_tip() {
         onView(withId(R.id.cost_of_service))
-            .perform(clearText(),typeText("75.00"))
+            .perform(clearText())
+            .perform(typeText("50.00"))
             .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.option_fifteen_percent))
+            .perform(click())
         onView(withId(R.id.calculate_button))
             .perform(click())
+        Thread.sleep(5000)
         onView(withId(R.id.tip_result))
-            .check(matches(withText(containsString("$11.25"))))
+            .check(matches(withText(containsString("$7.50"))))
+        onView(withId(R.id.total_result))
+            .check(matches(withText(containsString("$57.50"))))
     }
 
     @Test
