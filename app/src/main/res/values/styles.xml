@@ -17,4 +17,14 @@
         <item name="android:paddingStart">8dp</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
+
+    <style name="Widget.TipCalc.Slider" parent="Widget.MaterialComponents.Slider">
+        <item name="thumbTint">?attr/colorSecondary</item>
+        <item name="trackTint">?attr/colorSecondary</item>
+        <item name="tickColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.TipCalc.MaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">25dp</item>
+    </style>
 </resources>

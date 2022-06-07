@@ -20,7 +20,6 @@
             app:layout_constraintBottom_toBottomOf="@id/cost_of_service_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/cost_of_service_layout"
-            app:layout_constraintVertical_bias="0.482"
             app:srcCompat="@drawable/ic_dining" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -28,10 +27,12 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="@string/cost_of_service"
+            android:focusedByDefault="true"
+            app:boxStrokeColor="?attr/colorSecondary"
+            app:hintTextColor="?attr/colorSecondary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toEndOf="@id/icon_cost_of_service"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -40,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="numberDecimal"
-                android:textColorHint="#757575" />
+                android:textColorHint="#757575"
+                android:maxLength="8" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
@@ -58,10 +60,10 @@
             style="@style/Widget.TipCalc.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/how_was_the_service"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cost_of_service_layout" />
 
@@ -75,11 +77,16 @@
             app:layout_constraintTop_toBottomOf="@+id/service_question">
 
             <RadioButton
+                android:id="@+id/option_twenty_five_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/amazing_service" />
+
+            <RadioButton
                 android:id="@+id/option_twenty_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/amazing_service"
-                android:textColor="#00796B" />
+                android:text="@string/great_service" />
 
             <RadioButton
                 android:id="@+id/option_eighteen_percent"
@@ -106,27 +113,66 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/round_up_switch"
+            style="@style/Widget.TipCalc.CompoundButton.Switch"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:checked="false"
             android:text="@string/round_up_tip"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.128"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toEndOf="@+id/icon_round_up"
-            app:layout_constraintTop_toBottomOf="@+id/tip_options"
+            app:layout_constraintTop_toBottomOf="@+id/split_slider"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <ImageView
+            android:id="@+id/icon_split"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/split_slider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/split_slider"
+            app:srcCompat="@drawable/ic_split" />
+
+        <TextView
+            android:id="@+id/split_question"
+            style="@style/Widget.TipCalc.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/split_check"
+            app:layout_constraintEnd_toStartOf="@id/split_slider"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@id/icon_split"
+            app:layout_constraintTop_toBottomOf="@id/tip_options" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/split_slider"
+            style="@style/Widget.TipCalc.Slider"
+            android:layout_width="220dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="132dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/patrons_to_split"
+            android:stepSize="1"
+            android:valueFrom="1"
+            android:valueTo="6"
+            app:thumbColor="?attr/colorSecondary"
+            app:trackColor="?attr/colorSecondary"
+            app:layout_constraintStart_toEndOf="@+id/icon_split"
+            app:layout_constraintTop_toBottomOf="@+id/tip_options" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/calculate_button"
+            style="@style/Widget.TipCalc.MaterialButton"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_calculate"
             android:text="@string/calculate"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.182"
             app:layout_constraintStart_toEndOf="@id/icon_round_up"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/round_up_switch" />
@@ -136,23 +182,29 @@
             style="@style/Widget.TipCalc.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/calculate_button"
-            tools:text="Tip Amount: $10" />
+            app:layout_constraintTop_toBottomOf="@+id/calculate_button"
+            tools:text="Tip: $10" />
 
         <TextView
             android:id="@+id/total_result"
             style="@style/Widget.TipCalc.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tip_result"
-            tools:text="Total Amount: $100" />
+            app:layout_constraintTop_toBottomOf="@+id/tip_result"
+            tools:text="Total: $100" />
+
+        <TextView
+            android:id="@+id/num_checks"
+            style="@style/Widget.TipCalc.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_result"
+            tools:text="Checks:1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

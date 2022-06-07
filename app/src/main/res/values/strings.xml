@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Tip Calc</string>
     <string name="how_was_the_service">How was the Service?</string>
-    <string name="amazing_service">Amazing (20%)</string>
+    <string name="amazing_service">Amazing (25%)</string>
+    <string name="great_service">Great (20%)</string>
     <string name="good_service">Good (18%)</string>
     <string name="ok_service">Just OK (15%)</string>
     <string name="cost_of_service">Enter Amount*</string>
@@ -9,8 +10,11 @@
     <string name="split">Split?</string>
     <string name="round_up_tip">Round up tip?</string>
     <string name="calculate">Calculate</string>
-    <string name="tip_amount">Tip Amount: %s</string>
-    <string name="total_amount">Total Amount: %s</string>
+    <string name="tip_amount">Tip: %s</string>
+    <string name="total_amount">Total: %s</string>
+    <string name="num_checks">Checks: %s</string>
     <string name="split_slider_label">Split this check?</string>
     <string name="discount_slider_label">Apply discount?</string>
+    <string name="split_check">Split check?</string>
+    <string name="patrons_to_split">Number of patrons to split check</string>
 </resources>

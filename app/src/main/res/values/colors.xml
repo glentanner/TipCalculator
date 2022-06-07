@@ -2,10 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Purple/Teal -->
     <color name="purple">#6A1B9A</color>
     <color name="purple_dark">#38006B</color>
     <color name="purple_light">#9C4DCC</color>
     <color name="teal">#00BFA5</color>
     <color name="teal_dark">#008E76</color>
     <color name="teal_light">#5DF2D6</color>
+    <!-- Slava Ukraini! -->
+    <color name="blue">#005BBB</color>
+    <color name="blue_light">#5887EE</color>
+    <color name="blue_dark">#00338A</color>
+    <color name="yellow">#FFD500</color>
+    <color name="yellow_light">#FFFF52</color>
+    <color name="yellow_dark">#C7A400</color>
+    <color name="yellow_day">#C7A400</color>
+    <color name="yellow_dark_day">#927600</color>
 </resources>
