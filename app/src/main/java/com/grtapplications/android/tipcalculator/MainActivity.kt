@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         // Listen for Split Slider value
         val splitSlider: Slider = binding.splitSlider
         splitSlider.addOnChangeListener { _, value, _ ->
-             splitOption = value.roundToInt()
+            splitOption = value.roundToInt()
             if (binding.totalResult.text.isNotEmpty()) {
                 calculateTip()
             }
@@ -55,9 +55,13 @@ class MainActivity : AppCompatActivity() {
         // Get the cost of service as text, convert the string to a double (decimal)
         val stringInTextField = binding.costOfService.text.toString()
         val cost = stringInTextField.toDoubleOrNull()
-
+        // If there is no amount entered, remind the user to enter an amount
         if (cost == null) {
-            val snack = Snackbar.make(binding.root,"Enter an amount to calculate tip",Snackbar.LENGTH_LONG)
+            val snack = Snackbar.make(
+                binding.root,
+                "Enter an amount to calculate tip",
+                Snackbar.LENGTH_LONG
+            )
             snack.setAction("DISMISS", View.OnClickListener {
             })
             snack.show()
@@ -66,19 +70,19 @@ class MainActivity : AppCompatActivity() {
             binding.numChecks.text = ""
             return
         }
-
-        // Get tip percentage from the selected radio button
+        // Get tip percentage from the user
         val tipPercentage =
             when (binding.tipOptions.checkedRadioButtonId) {
                 R.id.option_twenty_five_percent -> 0.25
                 R.id.option_twenty_percent -> 0.20
                 R.id.option_eighteen_percent -> 0.18
+                R.id.option_fifteen_percent -> 0.15
                 else -> 0.15
             }
-
-        // Calculate tip
+        //
         if (cost * tipPercentage < minCost) {
-            val snack = Snackbar.make(binding.root,"Be nice. Minimal tip is $2",Snackbar.LENGTH_LONG)
+            val snack =
+                Snackbar.make(binding.root, "Be nice. Minimal tip is $2", Snackbar.LENGTH_LONG)
             snack.setAction("DISMISS", View.OnClickListener {
                 binding.costOfService.text!!.clear()
             })
@@ -88,19 +92,18 @@ class MainActivity : AppCompatActivity() {
             binding.numChecks.text = ""
             return
         }
-
-        var tip = (tipPercentage * cost) / splitOption
-        val total = (cost / splitOption) + tip
-
+        // Calculate tip
+        var tip = (tipPercentage * cost)
         // Round up if desired
         if (binding.roundUpSwitch.isChecked) {
             tip = kotlin.math.ceil(tip)
         }
-
+        // Calculate total for each check
+        val total = (cost + tip) / splitOption
         // Format currency according to user settings
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         val formattedTotal = NumberFormat.getCurrencyInstance().format(total)
-
+        // Set text fields
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
         binding.totalResult.text = getString(R.string.total_amount, formattedTotal)
         binding.numChecks.text = getString(R.string.num_checks, splitOption.toString())

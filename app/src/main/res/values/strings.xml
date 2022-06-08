@@ -10,8 +10,8 @@
     <string name="split">Split?</string>
     <string name="round_up_tip">Round up tip?</string>
     <string name="calculate">Calculate</string>
-    <string name="tip_amount">Tip: %s</string>
-    <string name="total_amount">Total: %s</string>
+    <string name="tip_amount">Total Tip (included): %s</string>
+    <string name="total_amount">Each Check Pays: %s</string>
     <string name="num_checks">Checks: %s</string>
     <string name="split_slider_label">Split this check?</string>
     <string name="discount_slider_label">Apply discount?</string>
