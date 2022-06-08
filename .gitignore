@@ -12,4 +12,5 @@ gradle*
 local.properties
 *.svg
 .idea/
+/app/release
 
