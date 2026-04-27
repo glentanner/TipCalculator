@@ -4,7 +4,7 @@
 
 ## Screenshots
 
-- [Main Page](https://www.grtanner.com/TipCalculator/TipCalculator/screenshots/1.png "Main App Page")
+- [Main Page](https://www.grtanner.com/tipcalc/screen.png)
 
 <!-- - [Result](https://www.grtanner.com/TipCalculator/TipCalculator/screenshots/2.png "Calculated Result") -->
 
