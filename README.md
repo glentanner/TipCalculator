@@ -2,14 +2,6 @@
 
 <p align="center">A simple tip calculator that allows the user to discount the total and to split checks with other diners.</p>
 
-## Links
-
-- [Repo](https://github.com/glentanner/TipCalculator "Tip Calculator Repo")
-
-- [Live](https://www.grtanner.com/TipCalculator "Live View")
-
-- [Bugs](https://github.com/glentanner/TipCalculator/issues "Issues Page")
-
 ## Screenshots
 
 - [Main Page](https://www.grtanner.com/TipCalculator/TipCalculator/screenshots/1.png "Main App Page")
